@@ -1,0 +1,51 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand --forceExit",
+    "ts-node": "ts-node -r tsconfig-paths/register",
+    "start": "yarn ts-node src/start.ts",
+    "dump:import": "yarn ts-node src/shared/dump/create-dump.ts",
+    "dump:clear": "yarn ts-node src/shared/dump/clear-dump.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "convict": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19",
+    "morgan": "^1.10.0",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/convict": "^5.2.1",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/faker": "^4.1.12",
+    "@types/hapi__joi": "^17.1.2",
+    "@types/jest": "^26.0.0",
+    "@types/mongoose": "^5.7.24",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.0.13",
+    "@types/supertest": "^2.0.9",
+    "faker": "^4.1.0",
+    "jest": "^26.0.1",
+    "jest-plugin-context": "^2.9.0",
+    "module-alias": "^2.2.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.1.0"
+  },
+  "_moduleAliases": {
+    "@src": "dist/src",
+    "@modules": "dist/src/modules",
+    "@shared": "dist/src/modules"
+  }
+}
