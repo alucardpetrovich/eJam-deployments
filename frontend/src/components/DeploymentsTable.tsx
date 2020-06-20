@@ -30,8 +30,6 @@ export const DeploymentsTable = () => {
     (state: RootState) => state.deployments
   );
 
-  console.log(deployments, errorMessage, isLoading);
-
   useEffect(() => {
     dispatch(getDeployments());
   }, [dispatch]);
@@ -47,7 +45,7 @@ export const DeploymentsTable = () => {
       <OperationError errorMessage={errorMessage} />
       {isLoadedEmptyDeployments && <p>No deployments</p>}
 
-      {!isLoading && (
+      {!isLoadedEmptyDeployments && (
         <TableStyled>
           <thead>
             <th>template name</th>

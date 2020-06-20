@@ -25,18 +25,20 @@ export function DeploymentTimer(props: IDeploymentTimerProps) {
   const [time, setTime] = useState(timerTimeout + 2 * TIMER_TICK_PERIOD_IN_MS);
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      setTime(time - TIMER_TICK_PERIOD_IN_MS);
+      setTime((prevTime) => {
+        if (prevTime <= 0) {
+          clearInterval(countdownInterval);
+          dispatch(showNewDeployment(targetDeployment._id));
+        }
 
-      if (time <= 0) {
-        clearInterval(countdownInterval);
-        dispatch(showNewDeployment(targetDeployment._id));
-      }
+        return prevTime - TIMER_TICK_PERIOD_IN_MS;
+      });
     }, TIMER_TICK_PERIOD_IN_MS);
 
     return () => {
       clearInterval(countdownInterval);
     };
-  });
+  }, [_id]);
 
   return <>{time >= 0 && <p>{moment(time).format("mm:ss:SSS")}</p>}</>;
 }
